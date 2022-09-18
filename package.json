@@ -1,5 +1,5 @@
 {
-  "name": "MCP",
+  "name": "vzdc-bot",
   "version": "1.0.0",
   "description": "Discord Bot",
   "main": "src/index.js",

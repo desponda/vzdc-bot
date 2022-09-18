@@ -7,10 +7,8 @@ import { resolve, join } from "path";
 export default class Client extends Discord.Client {
   commands: Discord.Collection<string, Command>;
   aliases: Discord.Collection<string, Command>;
- // db: Database;
+
   roleCache: roleCache;
-  ignoredRoleCache: roleCache;
-  githubToken: string;
 
   constructor(options?) {
     super(options);
@@ -50,7 +48,4 @@ export default class Client extends Discord.Client {
     return this;
   }
 
-//  loadDatabase(config: DBConfig) {
-  //  this.db = new Database(config);
-  //}
 }

@@ -6,7 +6,7 @@ export default class HelpCommand extends Command {
   constructor(client: Discord.Client) {
     super(client, {
       command: "help",
-      description: "Shows MCP Help",
+      description: "Shows vZDC Operator Help",
       roles: [
         "everyone"
       ]
@@ -16,7 +16,7 @@ export default class HelpCommand extends Command {
   async handle(message: Discord.Message, args: string[]) {
     const embed = new MessageEmbed();
     embed
-      .setTitle("MASTER CONTROL PROGRAM HELP")
+      .setTitle("vZDC OPERATOR HELP")
       .setDescription("PREFIX: TAG MASTER CONTROL PROGRAM")
       .setFooter({ text: "END OF LINE."})
       .setColor(message.guild.me.displayHexColor);
