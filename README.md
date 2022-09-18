@@ -1,1 +1,1 @@
-bot
+VZDC Bot
