@@ -32,6 +32,10 @@ declare interface roleCache {
   [key: string]: string
 }
 
+declare interface channelCache {
+  [key: string]: string
+}
+
 declare interface ApplicationConfig {
   type: string;
   docId: string;

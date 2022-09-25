@@ -22,9 +22,16 @@ export default class HelpCommand extends Command {
       .setColor(message.guild.me.displayHexColor);
     const commands = [];
     (message.client as Client).commands.forEach(cmd => {
+      try {
       commands.push(`\`${cmd.command}\` - ${cmd.description}`);
+      } catch(e) {
+        console.log("could not push message")
+      }
     });
     embed.addField("Commands", commands.join("\n"));
-    message.channel.send({ embeds: [embed]});
+    message.channel.send({ embeds: [embed]}).catch(error =>{
+      console.log(error)
+    });
+
   }
 }
