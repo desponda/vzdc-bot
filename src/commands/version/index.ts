@@ -6,7 +6,7 @@ export default class VersionCommand extends Command {
     super(client, {
       command: "request version information",
       alias: "version",
-      description: "MCP Version information",
+      description: "vZDC Operator Version information",
       roles: [
         "everyone"
       ]
@@ -14,6 +14,6 @@ export default class VersionCommand extends Command {
   }
 
   handle(message: Discord.Message, args: string[]): void {
-    message.channel.send(`MASTER CONTROL PROGRAM VERSION ${global.__version} BY DANIEL A. HAWTON. END OF LINE.`);
+    message.channel.send(`vZDC OPERATOR PROGRAM VERSION ${global.__version} BY DANIEL ESPONDA. END OF LINE.`);
   }
 }

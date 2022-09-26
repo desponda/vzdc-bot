@@ -2,13 +2,12 @@ import Discord from "discord.js";
 import Client from "../lib/Client";
 import Log from "../lib/Log";
 import axios, { AxiosAdapter, AxiosResponse } from "axios";
-import Utils from "../lib/Utils";
 
 export default async function (client: Client, message: Discord.Message) {
   if (message.channel.type === "DM") {
     // Only respond to version DMs, ignore the rest
     if (message.content.toLowerCase() === "version") {
-      message.author.send(`MASTER CONTROL PROGRAM VERSION ${global.__version} BY DANIEL A. HAWTON. END OF LINE.`);
+      message.author.send(`MASTER CONTROL PROGRAM VERSION ${global.__version} BY DANIEL ESPONDA. END OF LINE.`);
     }
     return;
   }
