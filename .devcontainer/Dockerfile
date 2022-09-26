@@ -4,6 +4,8 @@ ARG VARIANT=16-bullseye
 FROM mcr.microsoft.com/devcontainers/javascript-node:0-${VARIANT}
 
 RUN apt-get install -y docker.io
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>

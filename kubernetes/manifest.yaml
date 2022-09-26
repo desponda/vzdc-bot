@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bot
+  name: bot
+  namespace: vzdc-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bot
+  template:
+    metadata:
+      labels:
+        app: bot
+    spec:
+      containers:
+      - image: desponda/vzdc-bot:v0.2
+        name: vzdc-bot
+        resources: 
+          requests:
+            memory: 100Mi
+          limits:
+            memory: 100Mi
+        env:
+        - name: DISCORD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: DISCORD_TOKEN
+              name: discord

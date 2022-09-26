@@ -35,6 +35,9 @@ Log.info(`MASTER CONTROL PROGRAM ${global.__version}`);
 client.loadEvents("./events");
 client.loadCommands("./commands");
 
+const ratingMap = { 1: "Observer", 2: "Student 1", 3: "Student 2", 4: "Student 3", 5: "Controller 1", 6: "Controller 2", 7: "Controller 3", 8: "Instructor 1", 9: "Instructor 2",
+10: "Instructor 3", 11: "Supervisor", 12: "Admin"}
+
 client.login(config.discord.token);
 
 export { guild };
@@ -75,7 +78,7 @@ client.on("ready", async () => {
           'NTU_', 'NHK_', 'RDU_', 'CHO_', 'HGR_', 'LYH_', 'EWN_', 'LWB_', 'ISO_', 'MTN_', 'HEF_',
           'MRB_', 'PHF_', 'SBY_', 'NUI_', 'FAY_', 'ILM_', 'NKT_', 'NCA_', 'NYG_', 'DAA_', 'DOV_',
           'POB_', 'GSB_', 'WAL_', 'CVN_', 'DC_0', 'DC_1', 'DC_2', 'DC_3', 'DC_5', 'DC_N',
-          'DC_S', 'DC_E', 'DC_W', 'DC_I', 'JYO_', 'ZDC_'];
+          'DC_S', 'DC_E', 'DC_W', 'DC_I', 'JYO_'];
         let onlineControllers = res.data.controllers;
         let onlineZDCControllers = onlineControllers.filter(oc => {
           return watchedPositions.some(wp => oc.callsign.startsWith(wp));
@@ -86,7 +89,7 @@ client.on("ready", async () => {
           const embed = new MessageEmbed().setColor(0x1a6b28).setTitle(oc.callsign + " - Online").addFields(
             { name: "Facility", value: oc.callsign, inline: true },
             { name: "Name", value: oc.name, inline: true },
-            { name: "Rating", value: "C1", inline: true })
+            { name: "Rating", value: ratingMap[oc.rating], inline: true })
           c.send({ embeds: [embed] });
         });
 
@@ -96,7 +99,7 @@ client.on("ready", async () => {
           const embed = new MessageEmbed().setColor(0xA01013).setTitle(oc.callsign + " - Offline").addFields(
             { name: "Facility", value: oc.callsign, inline: true },
             { name: "Name", value: oc.name, inline: true },
-            { name: "Rating", value: "C1", inline: true })
+            { name: "Rating", value: ratingMap[oc.rating], inline: true })
           c.send({ embeds: [embed] });
         });
       })
